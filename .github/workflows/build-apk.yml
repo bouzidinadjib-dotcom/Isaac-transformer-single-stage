@@ -33,7 +33,8 @@ jobs:
           name: isaac-transformer-single-stage-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
       - name: Publier l'APK dans une Release GitHub (téléchargeable)
-        env: { GH_TOKEN: ${{ github.token }} }
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk isaac-transformer-single-stage.apk
           gh release delete apk-latest --yes --cleanup-tag -R ${{ github.repository }} || true
