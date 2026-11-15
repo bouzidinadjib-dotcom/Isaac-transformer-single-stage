@@ -3,6 +3,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch: {}
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,3 +32,12 @@ jobs:
         with:
           name: isaac-transformer-single-stage-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
+      - name: Publier l'APK dans une Release GitHub (téléchargeable)
+        env: { GH_TOKEN: ${{ github.token }} }
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk isaac-transformer-single-stage.apk
+          gh release delete apk-latest --yes --cleanup-tag -R ${{ github.repository }} || true
+          gh release create apk-latest isaac-transformer-single-stage.apk \
+            -R ${{ github.repository }} \
+            --title "APK (dernière version)" \
+            --notes "Produit automatiquement depuis ${{ github.sha }}." 
