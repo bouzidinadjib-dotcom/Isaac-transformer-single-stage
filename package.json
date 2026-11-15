@@ -1,0 +1,12 @@
+{
+  "name": "isaac-transformer-single-stage",
+  "version": "1.0.0",
+  "description": "Isaac Transformer and Single Stage",
+  "private": true,
+  "scripts": { "sync": "cap sync android" },
+  "dependencies": {
+    "@capacitor/android": "^7.4.4",
+    "@capacitor/core": "^7.4.4"
+  },
+  "devDependencies": { "@capacitor/cli": "^7.4.4" }
+}

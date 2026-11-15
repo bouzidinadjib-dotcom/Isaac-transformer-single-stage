@@ -1,0 +1,6 @@
+{
+  "appId": "com.nadjib.isaac",
+  "appName": "Isaac Transformer and Single Stage",
+  "webDir": "www",
+  "android": { "allowMixedContent": true }
+}
